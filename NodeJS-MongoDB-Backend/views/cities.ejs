@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/css/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="icon" href="https://cdn.iconscout.com/icon/free/png-256/mongodb-3629612-3032310.png">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Cities</title>    
+</head>
+<body>
+  <%- include("template/navbar") %>
+  
+  <div class="container mt-3">
+  <h1>Cities</h1>
+
+  <% if (empty == true) { %>
+    <p>No Cities</p>
+  <% } else { %>
+
+  <div class="row">
+    <% arrayEmployeesDB.forEach(employee => { %>
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="<%= employee.image %>" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title"><%= employee.name %></h5>
+          <p class="card-text"><%= employee.description %></p>
+          <td><a id="edit-button" href="/cities/<%= employee.id %>" class="btn btn-primary btn-sm">Edit City</a></td>           
+        </div>
+      </div>
+      <% }) %> 
+      
+  </div>
+  <% } %>
+  <button id="add-button" class="btn btn-success ml-1 mt-3" data-toggle="modal" data-target="#one">New City</button>
+          <div class="modal fade" id="one">
+            <div class="modal-dialog">
+              <div class="modal-content w-85">
+                <div class="modal-header">
+                  <h3 class="mt-4" style="font-family:sans-serif;">New City</h3>
+                </div>
+                <div class="modal-body">
+                  <form action="/cities" method="POST">
+                    <label>Name</label>
+                    <input type="text" placeholder="Name" class="form-control mb-3" required name="name">
+                    <label>Image</label>
+                    <input type="text" placeholder="Image" class="form-control mb-3" required name="image">
+                    <label>Description</label>
+                    <input type="text" placeholder="Description" class="form-control mb-3" required name="description">
+                    <button class="btn btn-success w-100" type="submit">Add</button>
+                </form>
+                </div>
+                <div class="modal-footer">
+                  <button class="btn btn-danger w-100" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <%- include("template/footer") %>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
+

@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Citymaz</string>
+
+    <string name="home_dialog_tittle">Borrar</string>
+    <string name="home_dialog_message">Eliminar a</string>
+    <string name="home_dialog_yes">Si</string>
+    <string name="home_dialog_no">No</string>
+
+    <!-- Home Fragment -->
+    <string name="home_button_description">Agregar ciudad</string>
+
+    <!-- Add Fragment -->
+    <string name="add_image_description">Encabezado</string>
+    <string name="add_add_city_text">Agregar un lugar</string>
+    <string name="add_city_name">Nombre</string>
+    <string name="add_city_description">Descripción</string>
+    <string name="add_city_url">URL</string>
+    <string name="add_add_button">Agregar</string>
+
+    <!-- Home Fragment -->
+    <string name="home_image_description">Imágen</string>
+    <string name="home_delete_city">Eliminar</string>
+    <string name="home_view_more">Ver más</string>
+
+    <!-- Detail Fragment -->
+    <string name="detail_image_description">Detalle</string>
+    <string name="detail_edit_button">Editar</string>
+
+    <!-- Edit Fragment -->
+    <string name="edit_image_description">Detalle</string>
+    <string name="edit_save_button">Guardar</string>
+
+</resources>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="model"
+            type="com.lizarragabriel.mynode.ui.edit.EditViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.edit.EditFragment">
+
+        <ImageView
+            android:id="@+id/header_cover_image"
+            loadImage="@{model.city.image}"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:scaleType="centerCrop"
+            android:contentDescription="@string/edit_image_description"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_launcher_background" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/mNameLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="300dp"
+
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:endIconMode="clear_text"
+            app:layout_constraintTop_toBottomOf="@+id/header_cover_image">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/mName"
+                android:text="@{model.city.name, default=`First Name`}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/mDescriptionLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:endIconMode="clear_text"
+            app:layout_constraintTop_toBottomOf="@+id/mNameLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/mDescription"
+                android:text="@{model.city.description, default=`Description`}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:layout_editor_absoluteX="41dp"
+                tools:layout_editor_absoluteY="160dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/mUrlLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            app:endIconMode="clear_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mDescriptionLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/mUrl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{model.city.image, default=`Url`}"
+                tools:layout_editor_absoluteX="43dp"
+                tools:layout_editor_absoluteY="221dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/mAdd"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> model.mAddButton(mName.getText().toString(), mDescription.getText().toString(), mUrl.getText().toString())}"
+            android:text="@string/edit_save_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mUrlLayout" />
+
+        <ProgressBar
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:visibility="@{model.loading ? View.VISIBLE : View.GONE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mAdd" />
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
